@@ -2,7 +2,6 @@
 
 # dependencies
 /node_modules
-/redux-essentials-example-app/node_modules
 /.pnp
 .pnp.js
 
