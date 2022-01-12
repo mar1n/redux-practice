@@ -10,18 +10,22 @@ const postsSlice = createSlice({
     name: 'posts',
     initialState,
     reducers: {
-        postAdded(state, action) {
-            state.push(action.payload)
-        },
-        prepare(title, content, userId) {
-            return {
-                payloda: {
-                    id: nanoid(),
-                    title,
-                    content,
-                    user: userId
+        postAdded: {
+            reducer(state, action) {
+                console.log('postAdded', action);
+                state.push(action.payload)
+            },
+            prepare(title, content, userId) {
+                return {
+                    payload: {
+                        id: nanoid(),
+                        date: new Date().toISOString(),
+                        title,
+                        content,
+                        user: userId
+                    }
                 }
-            }
+            },
         },
         postUpdated(state, action) {
             const { id, title, content } = action.payload;
